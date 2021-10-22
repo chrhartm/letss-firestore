@@ -14,7 +14,7 @@ service cloud.firestore {
     }
     // Can only create categories if status is REQUESTED
     // Can only read if status is active
-    match /categories/{category} {
+    match /categories/{isoCountryCode}/categories/{category} {
       allow read: if request.auth != null
                     && resource.data.status == "ACTIVE";
       allow create: if request.auth != null
