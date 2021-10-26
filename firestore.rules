@@ -47,5 +47,10 @@ service cloud.firestore {
     match /notifications/{userId} {
       allow read, write: if request.auth != null;
     }
+
+    // Create flags but don't read
+    match /flags/{flagId} {
+      allow create: if request.auth != null;
+    }
   }
 }
