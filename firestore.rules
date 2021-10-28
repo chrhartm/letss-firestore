@@ -30,8 +30,7 @@ service cloud.firestore {
     match /chats/{chat}/messages/{message} {
       allow read: if request.auth.uid in get(/databases/$(database)/documents/chats/$(chat)).data.users;
       allow read: if resource.data.user == request.auth.uid;
-      allow create: if request.resource.data.user == request.auth.uid
-                       && request.auth.uid in get(/databases/$(database)/documents/chats/$(chat)).data.users;
+      allow create: if request.auth.uid in get(/databases/$(database)/documents/chats/$(chat)).data.users;
     }
     // Matches can be updated and read only
     match /matches/{matchId} {
