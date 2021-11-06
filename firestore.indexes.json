@@ -33,6 +33,24 @@
       ]
     },
     {
+      "collectionGroup": "activities",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "categories",
       "queryScope": "COLLECTION",
       "fields": [
@@ -98,14 +116,14 @@
     },
     {
       "collectionGroup": "chats",
-      "queryScope": "COLLECTION_GROUP",
+      "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "user1",
-          "order": "ASCENDING"
+          "fieldPath": "users",
+          "arrayConfig": "CONTAINS"
         },
         {
-          "fieldPath": "user2",
+          "fieldPath": "lastMessage.timestamp",
           "order": "ASCENDING"
         }
       ]
@@ -136,6 +154,20 @@
           "fieldPath": "users",
           "arrayConfig": "CONTAINS"
         },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "likes",
+      "queryScope": "COLLECTION",
+      "fields": [
         {
           "fieldPath": "status",
           "order": "ASCENDING"
