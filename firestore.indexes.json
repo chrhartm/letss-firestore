@@ -137,6 +137,20 @@
           "arrayConfig": "CONTAINS"
         },
         {
+          "fieldPath": "lastMessage.timestamp",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "chats",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "users",
+          "arrayConfig": "CONTAINS"
+        },
+        {
           "fieldPath": "status",
           "order": "ASCENDING"
         },
