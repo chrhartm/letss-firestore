@@ -37,12 +37,15 @@ service cloud.firestore {
     match /matches/{matchId} {
       allow read, update: if resource.data.user == request.auth.uid;
     }
-    // User data can only be written by user, read by anyone
-    match /users/{userId} {
+    // Person data can only be written by user, read by anyone
+    match /persons/{userId} {
       allow read: if request.auth != null;
       allow write: if request.auth.uid == userId;
     }
-
+    // User data can only be read/written by user
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == userId;
+    }
     // Notification can be written and read by anybody
     match /notifications/{userId} {
       allow read, write: if request.auth != null;
