@@ -44,7 +44,7 @@ service cloud.firestore {
     }
     // User data can only be read/written by user
     match /users/{userId} {
-      allow read, write: if request.auth.uid == userId;
+      allow read: if request.auth.uid == userId;
     }
     // Notification can be written and read by anybody
     match /notifications/{userId} {
