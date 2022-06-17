@@ -58,5 +58,9 @@ service cloud.firestore {
     match /flags/{flagId} {
       allow create: if request.auth != null;
     }
+    // Templates can be read by anybody
+    match /templates/{templateId} {
+      allow read: if request.auth != null;
+    }
   }
 }
