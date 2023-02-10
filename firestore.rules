@@ -62,5 +62,13 @@ service cloud.firestore {
     match /templates/{templateId} {
       allow read: if request.auth != null;
     }
+    // Create blocks if creator is userId but don't read
+    match /blocks/{userId} {
+      allow read, write: if request.auth.uid == userId;
+    }
+    // Only user can add more blocks
+    match /blocks/{userId}/blocks/{blockedId} {
+      allow read, write: if userId == request.auth.uid;
+    }
   }
 }
