@@ -70,5 +70,14 @@ service cloud.firestore {
     match /blocks/{userId}/blocks/{blockedId} {
       allow read, write: if userId == request.auth.uid;
     }
+    // User can edit all of his followers and following
+    match /followers/{userId}/following/{otherId} {
+      allow read, write: if userId == request.auth.uid;
+    }
+    // User and follower can edit follower
+    match /followers/{userId}/followers/{otherId} {
+      allow read, write: if userId == request.auth.uid;
+      allow read, write: if otherId == request.auth.uid;
+    }
   }
 }
